@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+    height:auto;
+    min-height: 100%;
+}
+
+.intro {
+    background-color: black;
+    color: blue;
+    font-family: Impact;
+    text-align: center;
+    font-size: 8vh;
+    margin: 5vh 0 0 0;
+}
+
+.menutab {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    grid-auto-rows: minmax(10vh, auto);
+    background-color: rgb(160, 151, 211);
+    margin: 2vh 0 0 0 ;
+}
+
+#menu {
+    grid-column: 1;
+    grid-row: 1;
+    width: 20vw;
+    height: 80vh;
+    background-color:blueviolet;
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-size: 2vw;
+    position: relative;
+}
+
+#menu li {
+    font-family: Impact;
+    float: none;
+    margin: 0 2vw 0 0;
+    text-align: right;
+}
+
+#menu li:hover {
+    display: block;
+    background: blue;
+}
+
+#menu li a:hover {
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.home {
+    background-color: aquamarine;
+}
+
+#canvas {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    margin: 0 0 0 -17px;
+}
