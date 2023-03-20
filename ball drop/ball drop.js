@@ -2,7 +2,7 @@ let movers = [];
 
 
 function setup() {
-  createCanvas(640, 360);
+  createCanvas(windowWidth-20, windowHeight-150);
   reset();
 }
 

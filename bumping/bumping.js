@@ -1,11 +1,11 @@
 var ians = [];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth-20, windowHeight-150);
 }
 
 function draw() {
-  background(200);
+  background(250);
   for(var i = 0; i<ians.length; i++){
     ians[i].move();
     ians[i].display();

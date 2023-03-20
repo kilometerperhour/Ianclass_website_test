@@ -1,7 +1,7 @@
 let objects = [];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth-20, windowHeight-150);
 
   // Create some objects to destroy
   for (let i = 0; i < 5; i++) {
@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(250);
 
   // Update and draw the objects
   for (let i = 0; i < objects.length; i++) {

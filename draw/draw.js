@@ -1,7 +1,7 @@
 var ian = [];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth-20, windowHeight-150);
 }
 
 function draw() {
