@@ -8,7 +8,7 @@ class Shot {
         },
         bodyB: body,
         stiffness: 0.02,
-        length: 40
+        length: 40,
       };
       this.launch = Constraint.create(options);
       Composite.add(world, this.launch);
@@ -20,11 +20,13 @@ class Shot {
   
     show() {
       if (this.launch.bodyB) {
-        stroke(0);
-        strokeWeight(4);
+        push();
+        stroke(255, 255, 0);
+        strokeWeight(3);
         const posA = this.launch.pointA;
         const posB = this.launch.bodyB.position;
         line(posA.x, posA.y, posB.x, posB.y);
+        pop();
       }
     }
   

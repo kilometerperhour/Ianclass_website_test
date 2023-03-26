@@ -3,7 +3,7 @@ class Ball {
       const options = {
         restitution: 0.5,
         collisionFilter: {
-                category: ballCategory
+                category: ballCategory,
             }
         };
       this.body = Bodies.circle(x, y, r, options);
@@ -16,6 +16,7 @@ class Ball {
       const pos = this.body.position;
       const angle = this.body.angle;
       push();
+      fill(0);
       translate(pos.x, pos.y);
       rotate(angle);
       circle(0,0,this.r*2);
