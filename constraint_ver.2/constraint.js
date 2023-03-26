@@ -46,8 +46,8 @@ function setup() {
   mConstraint = MouseConstraint.create(engine, options);
   Composite.add(world, mConstraint);
 
-  for (var i = 0; i < 3; i++) {
-    boxes[i] = new Box(350, 300 - i * 50, 50, 50);
+  for (var i = 0; i < 5; i++) {
+    boxes[i] = new Box(350, 300 - i * 20, 20, 20);
   }
 
   ball = new Ball(100, 300, 25);
@@ -61,6 +61,7 @@ function keyPressed() {
     shot.attach(ball.body);
   }
   console.log(ball); 
+  console.log(boxes[0]); 
 }
 
 
@@ -74,6 +75,7 @@ function mouseReleased() {
 
 
 function draw() {
+  //console.log(boxes[0].body.velocity); 
   background(200);
   noStroke();
   fill(100);
