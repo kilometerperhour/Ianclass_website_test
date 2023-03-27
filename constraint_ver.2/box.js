@@ -9,18 +9,20 @@ class Box{
     };
 
     this.body = Bodies.rectangle(x, y, w, h, options);
-    Composite.add(world, this.body);
-    this.w = w;
-    this.h = h;
+  Composite.add(world, this.body);
+  
+  this.w = w;
+  this.h = h;
 
-    this.body.r = random(100, 255);
-    this.body.g = random(100);
-    this.body.b = random(100, 255);
+  this.body.r = random(100, 255);
+  this.body.g = random(100);
+  this.body.b = random(100, 255);
+
   }
 
   show(){
-    const pos = this.body.position;
-    const angle = this.body.angle;
+    var pos = this.body.position;
+    var angle = this.body.angle;
     push();
     noStroke();
     fill(this.body.r, this.body.g, this.body.b);

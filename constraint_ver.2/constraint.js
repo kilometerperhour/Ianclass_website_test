@@ -9,6 +9,7 @@ var Engine = Matter.Engine,
 var engine;
 var boxes = [];
 var ground;
+var LWall, RWall, roof;
 var ball;
 var shot;
 
@@ -27,16 +28,6 @@ function setup() {
   world = engine.world;
   Runner.start(engine);
 
-  ground = Bodies.rectangle(width / 2, height, width, height / 4,
-    {
-      isStatic: true,
-      collisionFilter: {
-        category: defaultCategory | ballCategory
-      }
-    });
-
-  Composite.add(world, ground);
-
   rectMode(CENTER);
 
   var canvasmouse = Mouse.create(document.body);
@@ -46,42 +37,50 @@ function setup() {
   mConstraint = MouseConstraint.create(engine, options);
   Composite.add(world, mConstraint);
 
-  for (var i = 0; i < 5; i++) {
-    boxes[i] = new Box(350, 300 - i * 20, 20, 20);
+  for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < 10; j++) {
+      boxes[i*10+j] = new Box(350 - j * 20, 300 - i * 20, 20, 20);
+    }
   }
 
-  ball = new Ball(100, 300, 25);
+  ball = new Ball(100, 300, 20);
+
+  ground = new Ground(width / 2, height, width, 50);
+  LWall = new Ground(0, height / 2, 20, height);
+  RWall = new Ground(width, height / 2, 20, height);
+  roof = new Ground(width / 2, 0, width, 20);
+
   shot = new Shot(100, 250, ball.body);
 }
 
 function keyPressed() {
   if (key == ' ') {
     Composite.remove(world, ball.body);
-    ball = new Ball(100, 300, 25);
+    ball = new Ball(100, 300, 20);
     shot.attach(ball.body);
   }
-  console.log(ball); 
-  console.log(boxes[0]); 
 }
 
 
 function mouseReleased() {
-    setTimeout(() => {
-      if (ball.body.speed>1) {
+  setTimeout(() => {
+    if (ball.body.speed > 1) {
       shot.fly();
-      }
-    }, 100);
-  }
+    }
+  }, 100);
+}
 
 
 function draw() {
-  //console.log(boxes[0].body.velocity); 
+  //console.log(boxes[0].body.velocity);
   background(200);
-  noStroke();
-  fill(100);
-  rect(ground.position.x, ground.position.y, width, height / 4);
 
   ball.show();
+  ground.show();
+  LWall.show();
+  RWall.show();
+  roof.show();
+
   shot.show();
 
   for (var box of boxes) {
