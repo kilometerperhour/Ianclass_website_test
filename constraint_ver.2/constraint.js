@@ -28,6 +28,8 @@ function setup() {
   world = engine.world;
   Runner.start(engine);
 
+  engine.timing.delta = 1/60;
+  
   rectMode(CENTER);
 
   var canvasmouse = Mouse.create(document.body);
@@ -46,9 +48,9 @@ function setup() {
   ball = new Ball(100, 300, 20);
 
   ground = new Ground(width / 2, height, width, 50);
-  LWall = new Ground(0, height / 2, 20, height);
-  RWall = new Ground(width, height / 2, 20, height);
-  roof = new Ground(width / 2, 0, width, 20);
+  LWall = new Ground(0, height / 2, 50, height);
+  RWall = new Ground(width, height / 2, 50, height);
+  roof = new Ground(width / 2, 0, width, 50);
 
   shot = new Shot(100, 250, ball.body);
 }
