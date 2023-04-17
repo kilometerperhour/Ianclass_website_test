@@ -22,10 +22,15 @@ class Box {
     this.makeValueState = true;
 
     this.alpha = 255;
-    this.pvX;
-    this.pvY;
+
+    this.particleX;
+    this.particleY;
+    this.pvX = [];
+    this.pvY = [];
 
     this.pieces = [];
+
+    this.particleNum = 10;
   }
 
   show() {
@@ -42,19 +47,25 @@ class Box {
     }
     else if (this.eraseState == true) {
       //nothing
-      push();
-      rect(this.body.position.x, this.body.position.y, 5, 5);
-      this.body.position.x += this.pvX;
-      this.body.position.y += this.pvY;
-      pop();
-      this.makeValueState = false;
+      this.particleX = this.body.position.x;
+      this.particleY = this.body.position.y;
+      for (var i = 0; i < this.particleNum; i++) {
+        push();
+        fill(255, 0, 0);
+        rect(this.particleX, this.particleY, 5, 5);
+        this.particleX += this.pvX[i];
+        this.particleY += this.pvY[i];
+        pop();
+      }
+
+      //this.makeValueState = false;
     }
   }
 
   erase() {
     if (this.body.velocity.x > 2.5 || this.body.velocity.x < -2.5
-      ||this.body.velocity.y> 2.5 || this.body.velocity.y < -2.5
-      ) {
+      || this.body.velocity.y > 2.5 || this.body.velocity.y < -2.5
+    ) {
       Composite.remove(world, this.body);
       this.makeValue();
     }
@@ -62,9 +73,12 @@ class Box {
 
   makeValue() {
     if (this.makeValueState == true) {
-      this.pvX = random(-this.body.velocity.x, this.body.velocity.x);
-      this.pvY = random(-this.body.velocity.y, this.body.velocity.y);
+      for (var i = 0; i < this.particleNum; i++) {
+        this.pvX[i] = random(-this.body.velocity.x-2, this.body.velocity.x+2);
+        this.pvY[i] = random(-this.body.velocity.y-2, this.body.velocity.y+2);
+      }
       this.eraseState = true;
+      this.makeValueState = false;
     }
   }
 
